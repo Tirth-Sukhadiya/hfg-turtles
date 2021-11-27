@@ -52,6 +52,18 @@
     border-radius: 8px;
 }
 
+#infoDiv {
+    top: 0px;
+    right: 0px;
+    position: absolute;
+    z-index: 2;
+    opacity: 0.9;
+    background-color: whitesmoke;
+    padding: 8px;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
 @media screen and (min-width: 1400px) {
     .kpi-container {
         padding: 16px;

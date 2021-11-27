@@ -16,8 +16,22 @@
   </div>
 </div>
 <div id="viewDiv"></div>
+<div id="infoDiv">
+    Filter by chemicals:
+    <select id="chemicalFilter">
+        <option value="">All</option>
+        <option *ngFor="let chemical of chemicalList" [value]="chemical.value">{{chemical.viewValue}}</option>
+    </select>
+
+    <!-- Filter by months -->
+    <!-- <select id="monthFilter">
+        <option value="">All</option>
+        <option *ngFor="let chemical of chemicalList" [value]="chemical.value">{{chemical.viewValue}}</option>
+    </select> -->
+</div>
+
 <img class="limo-green-logo" src="../assets/limo-icon.png">
-<div id="infoDiv" class="esri-widget">
+<!-- <div id="infoDiv" class="esri-widget">
   <h4 id="titleText" class="esri-widget__heading esri-editor__title">
     Water Pollutants - Netherlands
   </h4>
@@ -53,11 +67,11 @@
       <option value="4326">WGS 84</option>
     </select>
   </div>
-</div>
+</div> -->
 <div class="info-panel-bottom">
-  <h1 class="app-title">Welcome to Limo - Grow More Grow Smart</h1>
-  <p class="app-subtitle">
-    Limo gives seamless, intuitive access to high quality academic data.
-    Become a part of the Limo community, learn from the best, produce more, produce better, produce sustainable.
-  </p>
+    <h1 class="app-title">Welcome to Limo - Grow More Grow Smart</h1>
+    <p class="app-subtitle">
+        Limo gives seamless, intuitive access to high quality academic data.
+        Become a part of the Limo community, learn from the best, produce more, produce better, produce sustainable.
+    </p>
 </div>
