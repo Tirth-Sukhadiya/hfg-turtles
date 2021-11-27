@@ -13,3 +13,24 @@
     width: 200px;
     height: 320px;
 }
+
+.limo-green-logo {
+    height: 80px;
+    width: auto;
+    position: absolute;
+    bottom: 40px;
+    right: 30px;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+.info-panel-bottom {
+    position: absolute;
+    width: 80vw;
+    left: 30px;
+    bottom: 40px;
+    border-radius: 8px;
+    border: 1px solid black;
+    padding: 8px 16px;
+    background: rgba($color: #92a67c, $alpha: 0.6);
+}
