@@ -1,15 +1,29 @@
-<div class="app-header">
-  
+<div class="app-header div-flex-full-center">
+  <div class="kpi-container">
+    KPI 1 XYZ%
+  </div>
+  <div class="kpi-container">
+    KPI 2 XYZ%
+  </div>
+  <div class="kpi-container">
+    KPI 3 XYZ%
+  </div>
+  <div class="kpi-container">
+    KPI 4 XYZ%
+  </div>
+  <div class="kpi-container">
+    KPI 5 XYZ%
+  </div>
 </div>
 <div id="viewDiv"></div>
 <img class="limo-green-logo" src="../assets/limo-icon.png">
 <div id="infoDiv" class="esri-widget">
   <h4 id="titleText" class="esri-widget__heading esri-editor__title">
-    Water Pollutants - Year
+    Water Pollutants - Netherlands
   </h4>
   <br />
   <div class="esri-widget">
-    <calcite-slider min-value="20" max-value="50" min="0" max="100" precise ticks="5" label-ticks>
+    <calcite-slider min-value="0" max-value="4" min="0" max="4" label-ticks>
     </calcite-slider>
     <calcite-label><b>Select Chemical:</b>
       <calcite-radio-button-group name="Select land type" layout="vertical" id="landCoverTypeSelect" scale="s">
@@ -32,7 +46,7 @@
     </calcite-label>
   </div>
   <div id="projectionDiv" class="esri-widget">
-    <p><b>Change view's projection:</b></p>
+    <p><b>Please select a chemical:</b></p>
     <select id="projectWKID" class="esri-input esri-select">
       <option value="102003" selected>Albers Equal Area</option>
       <option value="102100">Web Mercator</option>
