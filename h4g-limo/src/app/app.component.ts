@@ -35,7 +35,8 @@ export class AppComponent implements OnInit {
           map: this.map,
           center: [4.288788, 52.078663], // Longitude, latitude
           zoom: 11, // Zoom level
-          container: this.mapDiv // Div element
+          container: this.mapDiv // Div element,
+
         });
 
         //Trailheads feature layer (points)
