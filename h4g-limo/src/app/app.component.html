@@ -1,19 +1,19 @@
 <div class="app-header div-flex-full-center">
-  <div class="kpi-container">
-    KPI 1 XYZ%
-  </div>
-  <div class="kpi-container">
-    KPI 2 XYZ%
-  </div>
-  <div class="kpi-container">
-    KPI 3 XYZ%
-  </div>
-  <div class="kpi-container">
-    KPI 4 XYZ%
-  </div>
-  <div class="kpi-container">
-    KPI 5 XYZ%
-  </div>
+    <div class="kpi-container">
+        KPI 1 XYZ%
+    </div>
+    <div class="kpi-container">
+        KPI 2 XYZ%
+    </div>
+    <div class="kpi-container">
+        KPI 3 XYZ%
+    </div>
+    <div class="kpi-container">
+        KPI 4 XYZ%
+    </div>
+    <div class="kpi-container">
+        KPI 5 XYZ%
+    </div>
 </div>
 <div id="viewDiv"></div>
 <div id="infoDiv">
@@ -22,12 +22,16 @@
         <option value="">All</option>
         <option *ngFor="let chemical of chemicalList" [value]="chemical.value">{{chemical.viewValue}}</option>
     </select>
+</div>
 
-    <!-- Filter by months -->
-    <!-- <select id="monthFilter">
-        <option value="">All</option>
-        <option *ngFor="let chemical of chemicalList" [value]="chemical.value">{{chemical.viewValue}}</option>
-    </select> -->
+<div id="timeSliderDiv">
+</div>
+
+<div id="legendsDiv">
+    <div *ngFor="let Legends of LegendsData">
+        <input type="checkbox" checked (click)="onChange($event, Legends.id)" />
+        {{ Legends.name }}
+    </div>
 </div>
 
 <img class="limo-green-logo" src="../assets/limo-icon.png">
@@ -68,7 +72,7 @@
     </select>
   </div>
 </div> -->
-<div class="info-panel-bottom">
+<div class="info-panel-bottom" *ngIf="this.showLandingBanner" [@inOutAnimation]>
     <h1 class="app-title">Welcome to Limo - Grow More Grow Smart</h1>
     <p class="app-subtitle">
         Limo gives seamless, intuitive access to high quality academic data.
