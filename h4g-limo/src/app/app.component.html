@@ -1,5 +1,45 @@
+<div class="app-header">
+  
+</div>
 <div id="viewDiv"></div>
 <img class="limo-green-logo" src="../assets/limo-icon.png">
+<div id="infoDiv" class="esri-widget">
+  <h4 id="titleText" class="esri-widget__heading esri-editor__title">
+    Water Pollutants - Year
+  </h4>
+  <br />
+  <div class="esri-widget">
+    <calcite-slider min-value="20" max-value="50" min="0" max="100" precise ticks="5" label-ticks>
+    </calcite-slider>
+    <calcite-label><b>Select Chemical:</b>
+      <calcite-radio-button-group name="Select land type" layout="vertical" id="landCoverTypeSelect" scale="s">
+        <calcite-label layout="inline">
+          <calcite-radio-button id="forests" value="forests" checked></calcite-radio-button>Forested Areas
+        </calcite-label>
+        <calcite-label layout="inline">
+          <calcite-radio-button value="developed"></calcite-radio-button>Developed Areas
+        </calcite-label>
+        <calcite-label layout="inline">
+          <calcite-radio-button value="crops"></calcite-radio-button>Cultivated Areas
+        </calcite-label>
+        <calcite-label layout="inline">
+          <calcite-radio-button value="hay"></calcite-radio-button>Hay/Pasture Areas
+        </calcite-label>
+        <calcite-label layout="inline">
+          <calcite-radio-button value="wetlands"></calcite-radio-button>Wetlands
+        </calcite-label>
+      </calcite-radio-button-group>
+    </calcite-label>
+  </div>
+  <div id="projectionDiv" class="esri-widget">
+    <p><b>Change view's projection:</b></p>
+    <select id="projectWKID" class="esri-input esri-select">
+      <option value="102003" selected>Albers Equal Area</option>
+      <option value="102100">Web Mercator</option>
+      <option value="4326">WGS 84</option>
+    </select>
+  </div>
+</div>
 <div class="info-panel-bottom">
   <h1 class="app-title">Welcome to Limo - Grow More Grow Smart</h1>
   <p class="app-subtitle">
