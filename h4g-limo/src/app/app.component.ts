@@ -12,6 +12,10 @@ import SimpleFillSymbol from "@arcgis/core/symbols/SimpleFillSymbol";
 import Legend from "@arcgis/core/widgets/Legend";
 import Compass from '@arcgis/core/widgets/Compass';
 import { animate, style, transition, trigger } from '@angular/animations';
+import TimeSlider from "@arcgis/core/widgets/TimeSlider";
+import TimeInterval from "@arcgis/core/TimeInterval";
+import TimeExtent from "@arcgis/core/TimeExtent";
+import moment from 'moment';
 
 interface Legends {
   id: number;
@@ -176,6 +180,43 @@ export class AppComponent implements OnInit {
         });
 
         this.view.ui.add(legend, "bottom-left");
+        //#endregion
+
+
+        //#region Time slider
+        const timeSlider = new TimeSlider({
+          container: "timeSliderDiv",
+          mode: "cumulative-from-start",
+          timeVisible: true,
+          loop: true
+        });
+        this.view.ui.add(timeSlider, {
+          position: "bottom-left",
+          index: 3
+        });
+
+        // wait until the layer view is loaded
+        this.view.whenLayerView(this.checmicalLayer).then((lv) => {
+          timeSlider.fullTimeExtent = this.checmicalLayer.timeInfo.fullTimeExtent.expandTo("months");
+          timeSlider.stops = {
+            interval: new TimeInterval({
+              unit: 'months',
+              value: 1
+            })
+          };
+
+          // set up time slider properties based on layer timeInfo
+          timeSlider.timeExtent = new TimeExtent({
+            start: null,
+            end: "01/01/2021"
+          });
+        });
+
+        timeSlider.watch("timeExtent", () => {
+          let triggeredDate = moment(timeSlider.timeExtent.end).format("MM/DD/YYYY hh:mm A");
+          this.checmicalLayer.definitionExpression =
+            `Resultaatd >= '12/31/2019 11:59 PM' and Resultaatd <= '${triggeredDate}'`;
+        });
         //#endregion
 
         //#region Heatmap
