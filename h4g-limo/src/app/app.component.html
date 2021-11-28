@@ -1,23 +1,17 @@
 <div class="app-header div-flex-full-center">
     <div class="kpi-container">
-        KPI 1 XYZ%
+      Water quality {{waterquality}}%
     </div>
     <div class="kpi-container">
-        KPI 2 XYZ%
+      Plant growth over one year in {{plantgrowth}}%
     </div>
     <div class="kpi-container">
-        KPI 3 XYZ%
-    </div>
-    <div class="kpi-container">
-        KPI 4 XYZ%
-    </div>
-    <div class="kpi-container">
-        KPI 5 XYZ%
+      Probable origin point {{originpoint}}
     </div>
 </div>
 <div id="viewDiv"></div>
-<div id="infoDiv">
-    Filter by chemicals:
+<div id="infoDiv" class="selectChemical">
+    <label class="FilterLabel">Filter by chemicals:</label> 
     <select id="chemicalFilter">
         <option value="">All</option>
         <option *ngFor="let chemical of chemicalList" [value]="chemical.value">{{chemical.viewValue}}</option>
@@ -29,8 +23,13 @@
 
 <div id="legendsDiv">
     <div *ngFor="let Legends of LegendsData">
-        <input type="checkbox" checked (click)="onChange($event, Legends.id)" />
-        {{ Legends.name }}
+      <div class="LegendsCls">
+        <label class="container">
+          {{ Legends.name }}
+          <input type="checkbox" checked (click)="onChange($event, Legends.id)" />
+          <span class="checkmark"></span>
+        </label>
+      </div>
     </div>
 </div>
 

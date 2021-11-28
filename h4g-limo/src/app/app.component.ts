@@ -68,6 +68,9 @@ export class AppComponent implements OnInit {
     { id: 2, name: 'Municipalities', isChecked: true },
     { id: 3, name: 'Green Houses', isChecked: true }
   ];
+  waterquality: number;
+  plantgrowth: number;
+  originpoint: string;
 
   chemicalList = [];
   monthList = [
@@ -89,6 +92,9 @@ export class AppComponent implements OnInit {
       this.showLandingBanner = false;
     }, 8000);
 
+    this.SetKPIPercentage();
+    this.originpoint = "4.288, 52.078"; 
+
     EsriConfig.apiKey = environment.esriConfigApiKey;
 
     const mapDivInterval = setInterval(() => {
@@ -98,7 +104,7 @@ export class AppComponent implements OnInit {
         this.mapDiv = _mapDiv;
 
         this.map = new Map({
-          basemap: "arcgis-topographic" // Basemap layer service
+          basemap: "arcgis-community" // Basemap layer service
         });
 
         this.view = new MapView({
@@ -107,6 +113,13 @@ export class AppComponent implements OnInit {
           zoom: 11, // Zoom level
           container: this.mapDiv // Div element,
         });
+        
+        //#region KPI indicator
+        this.view.watch('zoom', (_newValue, _oldValue) => {
+          this.SetKPIPercentage();
+          this.originpoint = parseFloat(_newValue).toFixed(3)  + ', ' + parseFloat(_oldValue).toFixed(3);
+        });
+        //#endregion
 
         //#region Add Compass to view
         let compass = new Compass({
@@ -181,7 +194,6 @@ export class AppComponent implements OnInit {
 
         this.view.ui.add(legend, "bottom-left");
         //#endregion
-
 
         //#region Time slider
         const timeSlider = new TimeSlider({
@@ -337,5 +349,9 @@ export class AppComponent implements OnInit {
     return retlayer;
   }
 
+  SetKPIPercentage() {
+    this.waterquality = Math.floor(Math.random() * 100);
+    this.plantgrowth = Math.floor(Math.random() * 100);
+  }
 
 }
